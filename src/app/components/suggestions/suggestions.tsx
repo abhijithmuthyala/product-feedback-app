@@ -1,4 +1,5 @@
 import { Category, Sort, getSuggestions } from "@/app/api/suggestions";
+import Suggestion from "./suggestion";
 
 type SuggestionsProps = {
   category: Category;
@@ -10,6 +11,13 @@ export default async function Suggestions({
   sort = "latest",
 }: SuggestionsProps) {
   const suggestions = await getSuggestions(category, sort);
-  console.log("🔥", suggestions);
-  return <></>;
+
+  return (
+    <section>
+      <h2 className="sr-only">List of feedbacks from users</h2>
+      {suggestions.map(function renderSuggestion(suggestion) {
+        return <Suggestion key={suggestion.id} data={suggestion} />;
+      })}
+    </section>
+  );
 }

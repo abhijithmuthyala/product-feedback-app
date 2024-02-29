@@ -34,3 +34,14 @@ export function createClient() {
     },
   );
 }
+
+export async function getAuthStatus() {
+  return !!(await getAuthUser());
+}
+
+async function getAuthUser() {
+  const supabase = createClient();
+  const { data } = await supabase.auth.getUser();
+
+  return data.user;
+}
