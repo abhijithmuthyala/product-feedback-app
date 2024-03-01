@@ -4,8 +4,10 @@ import Comment from "./comment";
 import { LevelContextProvider } from "./level-context";
 
 import { getComments } from "@/app/api/comments";
+import { getAuthStatus } from "@/supabase/server";
 
 export default async function Comments({ postId }) {
+  const isAuthenticated = await getAuthStatus();
   let comments;
 
   try {
@@ -19,7 +21,13 @@ export default async function Comments({ postId }) {
       <h2 className="sr-only">List of comments from users</h2>
       <LevelContextProvider>
         {comments.map(function renderComment(data) {
-          return <Comment key={data.id} data={data} />;
+          return (
+            <Comment
+              key={data.id}
+              data={data}
+              isAuthenticated={isAuthenticated}
+            />
+          );
         })}
       </LevelContextProvider>
     </section>
