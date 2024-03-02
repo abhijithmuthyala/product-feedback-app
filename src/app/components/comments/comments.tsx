@@ -5,6 +5,7 @@ import { LevelContextProvider } from "./level-context";
 
 import { getComments } from "@/app/api/comments";
 import { getAuthStatus } from "@/supabase/server";
+import CommentReplyForm from "../forms/comment-reply";
 
 export default async function Comments({ postId }) {
   const isAuthenticated = await getAuthStatus();
@@ -30,6 +31,7 @@ export default async function Comments({ postId }) {
           );
         })}
       </LevelContextProvider>
+      <CommentReplyForm commentData={{ id: null, comment_post_id: postId }} />
     </section>
   );
 }
