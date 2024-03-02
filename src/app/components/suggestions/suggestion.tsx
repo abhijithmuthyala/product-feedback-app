@@ -14,15 +14,11 @@ export default async function Suggestion({ data }) {
         <p>{data.description}</p>
         <CategoryTag category={data.category} />
       </div>
-      <SuggestionCommentsNumber />
+      <SuggestionCommentsNumber numComments={data.comments_count} />
     </article>
   );
 }
 
-function SuggestionUpvoteButton() {
-  return <></>;
-}
-
-function SuggestionCommentsNumber() {
-  return <></>;
+function SuggestionCommentsNumber({ numComments }) {
+  return <p>Comments: {numComments}</p>;
 }
