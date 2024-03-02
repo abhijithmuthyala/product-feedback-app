@@ -1,21 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { postCommentReply } from "@/app/actions/post-comment";
 
-export default function ReplyForm() {
-  const [comment, setComment] = useState("");
-
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
-  function handleChange(e) {
-    setComment(e.target.value);
-  }
-
+export default function CommentReplyForm({ commentData }) {
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea value={comment} onChange={handleChange} />
+    <form action={postCommentReply.bind(null, commentData)}>
+      <label htmlFor="comment">
+        <textarea required name="comment" id="comment" />
+      </label>
       <button type="submit">Reply</button>
     </form>
   );
