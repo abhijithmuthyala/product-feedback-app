@@ -31,7 +31,7 @@ export default async function Comments({ postId }) {
           );
         })}
       </LevelContextProvider>
-      <CommentReplyForm commentData={{ id: null, comment_post_id: postId }} />
+      <CommentReplyForm postID={postId} parentID={null} />
     </section>
   );
 }
