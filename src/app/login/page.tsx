@@ -1,4 +1,4 @@
-import { handleLogin, handleSignup } from "../actions/login";
+import { handleLogin, handleSignup } from "../../actions/login";
 import SignInButton from "../components/buttons/sign-in";
 import SignUpButton from "../components/buttons/sign-up";
 

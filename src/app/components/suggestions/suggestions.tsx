@@ -1,4 +1,4 @@
-import { Category, Sort, getSuggestions } from "@/app/api/suggestions";
+import { Category, Sort, getSuggestions } from "@/api/suggestions";
 import Suggestion from "./suggestion";
 
 type SuggestionsProps = {

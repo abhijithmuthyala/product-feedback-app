@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Comments from "@/app/components/comments/comments";
 import Suggestion from "@/app/components/suggestions/suggestion";
 
-import { getSuggestion } from "@/app/api/suggestion";
+import { getSuggestion } from "@/api/suggestion";
 
 export default async function DetailsPage({ params }) {
   let suggestionData;

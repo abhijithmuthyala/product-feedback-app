@@ -1,6 +1,6 @@
 "use client";
 
-import { postCommentReply } from "@/app/actions/post-comment";
+import { postCommentReply } from "@/actions/post-comment";
 
 export default function CommentReplyForm({ commentData }) {
   return (

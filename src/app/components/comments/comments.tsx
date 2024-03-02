@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Comment from "./comment";
 import { LevelContextProvider } from "./level-context";
 
-import { getComments } from "@/app/api/comments";
+import { getComments } from "@/api/comments";
 import { getAuthStatus } from "@/supabase/server";
 import CommentReplyForm from "../forms/comment-reply";
 
