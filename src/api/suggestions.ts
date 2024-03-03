@@ -18,7 +18,7 @@ export async function getSuggestions(category: Category, sort: Sort) {
       sort_param: sort,
     });
     if (error) {
-      throw new Error(error);
+      throw new Error(error.message);
     }
     return data;
   } catch (error) {

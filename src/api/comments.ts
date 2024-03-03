@@ -8,7 +8,7 @@ export async function getComments(postID: number) {
   });
 
   if (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 
   return data;

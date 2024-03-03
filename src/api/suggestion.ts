@@ -9,7 +9,7 @@ export async function getSuggestion(id: number) {
   const suggestions = data[0];
 
   if (error || !suggestions) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 
   return suggestions;
