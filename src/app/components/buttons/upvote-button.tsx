@@ -1,5 +1,13 @@
 "use client";
 
-export default function UpvoteButton({ disabled, upvotes }) {
-  return <button disabled={disabled}>Upvotes: {upvotes}</button>;
+import { updateUpvote } from "@/actions/upvote";
+
+export default function UpvoteButton({ disabled, upvotes, upvoted, postID }) {
+  return (
+    <form action={updateUpvote.bind(null, postID, upvoted)}>
+      <button type="submit" disabled={disabled}>
+        Upvotes: {upvotes}
+      </button>
+    </form>
+  );
 }

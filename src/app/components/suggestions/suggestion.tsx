@@ -8,7 +8,13 @@ export default async function Suggestion({ data }) {
 
   return (
     <article>
-      <UpvoteButton disabled={!isAuthenticated} upvotes={data.upvotes_count} />
+      <UpvoteButton
+        disabled={!isAuthenticated}
+        upvotes={data.upvotes_count}
+        upvoted={data.upvoted}
+        postID={data.id}
+      />
+      {isAuthenticated && data.upvoted && <strong>(Upvoted)</strong>}
       <div>
         <h3>{data.title}</h3>
         <p>{data.description}</p>
