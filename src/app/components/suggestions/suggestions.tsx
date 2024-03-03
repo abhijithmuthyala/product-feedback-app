@@ -16,7 +16,9 @@ export default async function Suggestions({
     <section>
       <h2 className="sr-only">List of feedbacks from users</h2>
       {suggestions.map(function renderSuggestion(suggestion) {
-        return <Suggestion key={suggestion.id} data={suggestion} />;
+        return (
+          <Suggestion key={suggestion.id} data={suggestion} asLink={true} />
+        );
       })}
     </section>
   );
