@@ -5,14 +5,18 @@ import { updateSession } from "./supabase/middleware";
 export async function middleware(request: NextRequest) {
   const { response, data, error } = await updateSession(request);
 
+  const isLoginPage = request.nextUrl.pathname === "/login";
+  const isHomePage = request.nextUrl.pathname === "/";
+
   if (!data.user || error) {
-    if (
-      request.nextUrl.pathname === "/login" ||
-      request.nextUrl.pathname === "/"
-    ) {
+    if (isLoginPage || isHomePage) {
       return response;
     }
     return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  if (isLoginPage) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return response;
