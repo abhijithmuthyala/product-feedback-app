@@ -14,6 +14,7 @@ export default async function Comments({ postId }) {
   try {
     comments = await getComments(postId);
   } catch (err) {
+    console.error(err);
     return notFound();
   }
 

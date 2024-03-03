@@ -6,11 +6,11 @@ export async function getSuggestion(id: number) {
   const { data, error } = await supabase.rpc(suggestionByID, {
     post_id_param: id,
   });
-  const suggestions = data[0];
+  const suggestion = data[0];
 
-  if (error || !suggestions) {
+  if (error || !suggestion) {
     throw new Error(error.message);
   }
 
-  return suggestions;
+  return suggestion;
 }

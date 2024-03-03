@@ -1,5 +1,3 @@
-"use client";
-
 import { deletePost } from "@/actions/edit-post";
 
 export default function DeletePostButton({ postID }) {

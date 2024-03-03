@@ -18,7 +18,7 @@ export default function EditPostForm({ actions, postData }) {
       <label htmlFor="desc">
         Update description
         <textarea
-          name="desc"
+          name="description"
           id="desc"
           required
           defaultValue={postData.description}

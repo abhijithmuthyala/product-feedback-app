@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-export default function CancelEditPost() {
+export default function CancelEditButton() {
   const router = useRouter();
 
   function handleClick() {
