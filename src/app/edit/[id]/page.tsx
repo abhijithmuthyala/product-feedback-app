@@ -6,9 +6,9 @@ import { notFound } from "next/navigation";
 
 export default async function EditPage({ params }) {
   const isAuthenticated = await getAuthStatus();
-  const { owner: isOwner } = await getSuggestion(params.id);
+  const postData = await getSuggestion(params.id);
 
-  if (!isAuthenticated || !isOwner) {
+  if (!isAuthenticated || !postData.owner) {
     return notFound();
   }
 
@@ -17,7 +17,7 @@ export default async function EditPage({ params }) {
   return (
     <>
       <main>
-        <EditPostForm actions={actions} />
+        <EditPostForm actions={actions} postData={postData} />
       </main>
     </>
   );
