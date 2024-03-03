@@ -1,10 +1,12 @@
 import { getAuthStatus } from "@/supabase/server";
 
+import Link from "next/link";
 import UpvoteButton from "../buttons/upvote-button";
 import CategoryTag from "./category-tag";
 
-export default async function Suggestion({ data }) {
+export default async function Suggestion({ data, asLink = false }) {
   const isAuthenticated = await getAuthStatus();
+  const title = <h3>{data.title}</h3>;
 
   return (
     <article>
@@ -16,7 +18,7 @@ export default async function Suggestion({ data }) {
       />
       {isAuthenticated && data.upvoted && <strong>(Upvoted)</strong>}
       <div>
-        <h3>{data.title}</h3>
+        {asLink ? <Link href={`/details/${data.id}`}>{title}</Link> : title}
         <p>{data.description}</p>
         <CategoryTag category={data.category} />
       </div>
