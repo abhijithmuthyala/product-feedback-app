@@ -13,7 +13,7 @@ export default async function Suggestions({
   const suggestions = await getSuggestions(category, sort);
 
   return (
-    <section>
+    <section className="flex flex-col gap-y-4">
       <h2 className="sr-only">List of feedbacks from users</h2>
       {suggestions.map(function renderSuggestion(suggestion) {
         return (

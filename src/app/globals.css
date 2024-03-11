@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --neutral-0: #ffffff;
+    --neutral-1: #f2f4ff;
+    --neutral-2: #cfd7ff;
+    --neutral-3: #f7f8fd;
+    --neutral-4: #cdd2ee;
+    --neutral-5: #656ea3;
+    --neutral-6: #647196;
+    --neutral-7: #3a4374;
+    --neutral-8: #373f68;
+
+    --blue-4: #7c91f9;
+    --blue-6: #4661e6;
+
+    --teal-6: #62bcfa;
+    --teal-9: #28a7ed;
+
+    --purple-5: #c75af6;
+    --purple-7: #a337f6;
+    --purple-9: #ad1fea;
+
+    --orange-7: #fbb57a;
+    --orange-8: #f49f85;
+    --orange-9: #e98888;
+
+    --red-8: #e84d70;
+    --red-9: #d73737;
+
+    --primary: var(--purple-9);
+    --secondary: var(--blue-6);
+
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+    --fs-sm: 0.8125rem;
+    --fs-base: 1rem;
+
+    --body-offset: 1.5rem;
+
+    --text-body: var(--neutral-7);
+  }
+}
