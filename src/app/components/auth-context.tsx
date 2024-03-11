@@ -1,28 +1,17 @@
 "use client";
 
-import { createClient } from "@/supabase/client";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
 
-const AuthContext = createContext(null);
-const supabase = createClient();
+const ClientAuthContext = createContext(false);
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+export function useAuthStatus() {
+  return useContext(ClientAuthContext);
+}
 
-  useEffect(function updateAuth() {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(handleAuthStateChange);
-
-    function handleAuthStateChange(event, session) {
-      console.log("event", event);
-      console.log("session", session);
-    }
-
-    return subscription.unsubscribe;
-  }, []);
-
+export function AuthStatusProvider({ children, value }) {
   return (
-    <AuthContext.Provider value={supabase}>{children}</AuthContext.Provider>
+    <ClientAuthContext.Provider value={value}>
+      {children}
+    </ClientAuthContext.Provider>
   );
 }

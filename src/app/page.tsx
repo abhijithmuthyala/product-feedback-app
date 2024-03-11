@@ -1,3 +1,5 @@
+import NewSuggestionLink from "./components/new-suggestion-link";
+import SortOptions from "./components/sort-options";
 import Suggestions from "./components/suggestions/suggestions";
 
 export default function Home({ searchParams }) {
@@ -5,9 +7,14 @@ export default function Home({ searchParams }) {
 
   return (
     <>
-      <main className="mx-5 p-2 sm:p-4 md:p-4">
-        <h1 className="text-3xl font-bold">Supabase + Next.js</h1>
-        <Suggestions category={category} sort={sort} />
+      <main className="">
+        <div className="flex flex-wrap items-center justify-between gap-3 bg-neutral-8 px-body-offset py-2 text-sm text-neutral-1">
+          <SortOptions />
+          <NewSuggestionLink />
+        </div>
+        <div className="px-body-offset py-8">
+          <Suggestions category={category} sort={sort} />
+        </div>
       </main>
     </>
   );
