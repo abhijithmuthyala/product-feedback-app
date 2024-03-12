@@ -24,7 +24,7 @@ export default function HamburgerMenu() {
   return (
     <>
       <button
-        className={`${menuIcons.get(isOpen)} h-4 w-5 bg-contain bg-center bg-no-repeat transition-all duration-200`}
+        className={`${menuIcons.get(isOpen)} h-4 w-5 bg-contain bg-center bg-no-repeat transition-all duration-300 md:hidden`}
         aria-label={ariaLabel.get(isOpen)}
         onClick={toggleMenu}
       ></button>

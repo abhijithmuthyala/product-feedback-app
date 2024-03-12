@@ -3,7 +3,6 @@ import "./globals.css";
 
 import { getAuthStatus } from "@/supabase/server";
 import { AuthStatusProvider } from "./components/auth-context";
-import Header from "./components/header";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -18,7 +17,6 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <AuthStatusProvider value={isAuthenticated}>
         <body className={`${jost.className} bg-body bg-neutral-3 text-base`}>
-          <Header />
           {children}
         </body>
       </AuthStatusProvider>

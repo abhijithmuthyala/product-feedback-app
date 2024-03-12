@@ -10,6 +10,8 @@ const config: Config = {
     fontSize: {
       sm: "var(--fs-sm)",
       base: "var(--fs-base)",
+      lg: "var(--fs-lg)",
+      xl: "var(--fs-xl)",
     },
     fontWeight: {
       regular: "var(--fw-regular)",
@@ -17,15 +19,7 @@ const config: Config = {
       semibold: "var(--fw-semibold)",
       bold: "var(--fw-bold)",
     },
-    backgroundImage: {
-      "hero-mobile": "url('/assets/suggestions/mobile/background-header.png')",
-      hamburger: "url('/assets/shared/mobile/icon-hamburger.svg')",
-      close: "url('/assets/shared/mobile/icon-close.svg')",
-      plus: "url('/assets/shared/icon-plus.svg')",
-      "up-arrow": "url('/assets/shared/icon-arrow-up.svg')",
-      "down-arrow": "url('/assets/shared/icon-arrow-down.svg')",
-      comment: "url('/assets/shared/icon-comments.svg')",
-    },
+
     colors: {
       neutral: {
         0: "var(--neutral-0)",
@@ -40,6 +34,11 @@ const config: Config = {
       },
       primary: "var(--primary)",
       secondary: "var(--secondary)",
+      status: {
+        planned: "var(--status-planned)",
+        "in-progress": "var(--status-in-progress)",
+        live: "var(--status-live)",
+      },
       blue: {
         4: "var(--blue-4)",
         6: "var(--blue-6)",
@@ -67,6 +66,21 @@ const config: Config = {
     extend: {
       spacing: {
         "body-offset": "var(--body-offset)",
+      },
+      backgroundImage: {
+        "hero-mobile":
+          "url('/assets/suggestions/mobile/background-header.png')",
+        "hero-desktop":
+          "url('/assets/suggestions/desktop/background-header.png')",
+        "hero-tablet":
+          "url('/assets/suggestions/tablet/background-header.png')",
+
+        hamburger: "url('/assets/shared/mobile/icon-hamburger.svg')",
+        close: "url('/assets/shared/mobile/icon-close.svg')",
+        plus: "url('/assets/shared/icon-plus.svg')",
+        "up-arrow": "url('/assets/shared/icon-arrow-up.svg')",
+        "down-arrow": "url('/assets/shared/icon-arrow-down.svg')",
+        comment: "url('/assets/shared/icon-comments.svg')",
       },
     },
   },

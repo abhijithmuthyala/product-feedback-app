@@ -34,6 +34,10 @@
     --primary: var(--purple-9);
     --secondary: var(--blue-6);
 
+    --status-live: var(--teal-6);
+    --status-in-progress: var(--purple-9);
+    --status-planned: var(--orange-8);
+
     --fw-regular: 400;
     --fw-medium: 500;
     --fw-semibold: 600;
@@ -41,9 +45,23 @@
 
     --fs-sm: 0.8125rem;
     --fs-base: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
 
     --body-offset: 1.5rem;
 
     --text-body: var(--neutral-7);
+  }
+
+  @media screen and (min-width: 768px) {
+    :root {
+      --body-offset: 2.5rem;
+    }
+  }
+}
+
+@layer utilities {
+  .max-w-content {
+    max-width: 1192px;
   }
 }
