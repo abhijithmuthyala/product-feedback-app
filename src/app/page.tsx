@@ -1,3 +1,4 @@
+import HamburgerMenu from "./components/buttons/hamburger-menu";
 import Header from "./components/header";
 import NewSuggestionLink from "./components/new-suggestion-link";
 import RoadmapSummary from "./components/roadmap-summary";
@@ -8,12 +9,29 @@ import Suggestions from "./components/suggestions/suggestions";
 export default function Home({ searchParams }) {
   const { category, sort } = searchParams;
 
+  const menuItem = (
+    <div className="absolute right-0 top-full col-span-2 grid gap-2.5 max-md:bg-neutral-6 md:static md:grid-cols-2 lg:grid-cols-1">
+      <div className="max-md:max-w-64">
+        <SuggestionsFilters className="min-h-full" />
+      </div>
+      <div className="max-md:max-w-64">
+        <RoadmapSummary />
+      </div>
+    </div>
+  );
+
   return (
     <main className="max-w-content mx-auto grid lg:grid-cols-[16rem_1fr] lg:gap-x-8 lg:px-body-offset">
-      <div className="grid gap-2.5 md:grid-cols-3 md:px-body-offset md:pb-10 md:pt-14 lg:col-start-1 lg:auto-rows-max lg:grid-cols-1 lg:px-0 lg:pt-24">
-        <Header />
-        <SuggestionsFilters />
-        <RoadmapSummary />
+      <div className="relative grid md:grid-cols-3 md:gap-x-2.5 md:px-body-offset md:pb-10 md:pt-14 lg:col-start-1 lg:auto-rows-max lg:grid-cols-1 lg:gap-x-0 lg:gap-y-2.5 lg:px-0 lg:pt-24">
+        <Header>
+          <div className="md:hidden">
+            <HamburgerMenu
+              className="absolute right-6 top-1/2 -translate-y-1/2 transform"
+              menuItem={menuItem}
+            />
+          </div>
+          <div className="col-span-2 hidden md:block">{menuItem}</div>
+        </Header>
       </div>
       <div className="lg:col-start-2 lg:pt-24">
         <div className="bg-neutral-8 px-body-offset md:bg-inherit lg:px-0">

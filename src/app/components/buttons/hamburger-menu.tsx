@@ -13,7 +13,7 @@ const ariaLabel = new Map([
   [false, "Open menu"],
 ]);
 
-export default function HamburgerMenu() {
+export default function HamburgerMenu({ menuItem, className }) {
   const [isOpen, setIsOpen] = useState(false);
   const isAuthenticated = useAuthStatus();
 
@@ -24,10 +24,11 @@ export default function HamburgerMenu() {
   return (
     <>
       <button
-        className={`${menuIcons.get(isOpen)} h-4 w-5 bg-contain bg-center bg-no-repeat transition-all duration-300 md:hidden`}
+        className={`${menuIcons.get(isOpen)} h-4 w-5 bg-contain bg-center bg-no-repeat transition-all duration-300 ${className}`}
         aria-label={ariaLabel.get(isOpen)}
         onClick={toggleMenu}
       ></button>
+      {isOpen && menuItem}
     </>
   );
 }
