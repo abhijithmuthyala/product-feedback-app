@@ -16,7 +16,7 @@ export default function UpvoteButton({ upvotes, upvoted, postID }) {
       <button
         type="submit"
         disabled={!isAuthenticated}
-        className="flex items-center gap-2 rounded-md bg-neutral-1 px-4 py-1.5 md:flex-col md:px-3 md:py-3"
+        className="flex items-center gap-2 rounded-md bg-neutral-1 px-4 py-1.5 sm:flex-col sm:px-3 sm:py-3"
       >
         <span
           className={`${voteIcons.get(upvoted)} h-2 w-2.5 bg-cover bg-center bg-no-repeat`}
