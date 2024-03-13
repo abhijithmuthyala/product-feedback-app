@@ -12,7 +12,6 @@ export async function postCommentReply(parentID, postID, formData) {
   });
 
   if (error) console.error(error);
-
   revalidatePath("/details");
   return data;
 }

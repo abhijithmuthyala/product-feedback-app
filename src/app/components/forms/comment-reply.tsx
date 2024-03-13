@@ -1,14 +1,16 @@
-"use client";
+import PostCommentButton from "../buttons/post-comment";
+import TextArea from "../text-area";
 
-import { postCommentReply } from "@/actions/post-comment";
+export default function CommentReplyForm({ onSuccess, action }) {
+  async function postReply(formData) {
+    await action(formData);
+    onSuccess();
+  }
 
-export default function CommentReplyForm({ parentID, postID }) {
   return (
-    <form action={postCommentReply.bind(null, parentID, postID)}>
-      <label htmlFor="comment">
-        <textarea required name="comment" id="comment" />
-      </label>
-      <button type="submit">Reply</button>
+    <form action={postReply} className="grid gap-y-2">
+      <TextArea placeholder="Type your comment here" />
+      <PostCommentButton>Post comment</PostCommentButton>
     </form>
   );
 }

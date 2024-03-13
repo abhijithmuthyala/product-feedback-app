@@ -65,6 +65,9 @@ const config: Config = {
       inherit: "inherit",
     },
     extend: {
+      borderWidth: {
+        1: "1px",
+      },
       spacing: {
         "body-offset": "var(--body-offset)",
       },
@@ -81,6 +84,7 @@ const config: Config = {
         plus: "url('/assets/shared/icon-plus.svg')",
         "up-arrow": "url('/assets/shared/icon-arrow-up.svg')",
         "down-arrow": "url('/assets/shared/icon-arrow-down.svg')",
+        "left-arrow": "url('/assets/shared/icon-arrow-left.svg')",
         comment: "url('/assets/shared/icon-comments.svg')",
       },
     },

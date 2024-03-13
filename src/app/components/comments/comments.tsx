@@ -4,11 +4,8 @@ import Comment from "./comment";
 import { LevelContextProvider } from "./level-context";
 
 import { getComments } from "@/api/comments";
-import { getAuthStatus } from "@/supabase/server";
-import CommentReplyForm from "../forms/comment-reply";
 
 export default async function Comments({ postId }) {
-  const isAuthenticated = await getAuthStatus();
   let comments;
 
   try {
@@ -18,21 +15,32 @@ export default async function Comments({ postId }) {
     return notFound();
   }
 
+  const numberOfComments = getNumberOfComments(comments);
+
   return (
-    <section>
-      <h2 className="sr-only">List of comments from users</h2>
-      <LevelContextProvider>
-        {comments.map(function renderComment(data) {
-          return (
-            <Comment
-              key={data.id}
-              data={data}
-              isAuthenticated={isAuthenticated}
-            />
-          );
-        })}
-      </LevelContextProvider>
-      <CommentReplyForm postID={postId} parentID={null} />
+    <section className="rounded-md bg-neutral-0 px-6 py-6">
+      <h2 className="text-lg font-bold text-neutral-7">
+        {numberOfComments} Comments
+      </h2>
+      <div className="mt-6 grid gap-y-6">
+        <LevelContextProvider>
+          {comments.map(function renderComment(data, index) {
+            return (
+              <Comment
+                key={data.id}
+                data={data}
+                isLastComment={index === comments.length - 1}
+              />
+            );
+          })}
+        </LevelContextProvider>
+      </div>
     </section>
   );
+}
+
+function getNumberOfComments(comments) {
+  return comments.reduce(function (total, comment) {
+    return total + getNumberOfComments(comment.replies ?? []);
+  }, comments.length);
 }
