@@ -10,13 +10,13 @@ export default async function Suggestion({ data, asLink = false }) {
     data.title[0].toUpperCase(),
   );
   const titleElement = (
-    <h3 className="font-bold text-neutral-7 sm:text-lg">
+    <h2 className="font-bold text-neutral-7 sm:text-lg">
       {asLink ? (
         <Link href={`/details/${data.id}`}>{formattedTitle}</Link>
       ) : (
         formattedTitle
       )}
-    </h3>
+    </h2>
   );
 
   return (

@@ -4,6 +4,8 @@ import Comments from "@/app/components/comments/comments";
 import Suggestion from "@/app/components/suggestions/suggestion";
 
 import { getSuggestion } from "@/api/suggestion";
+import BackButton from "@/app/components/buttons/back";
+import EditFeedbackLink from "@/app/components/edit-feedback-link";
 
 export default async function DetailsPage({ params }) {
   let suggestionData;
@@ -14,12 +16,17 @@ export default async function DetailsPage({ params }) {
   }
 
   return (
-    <>
-      <main>
-        <h1>Post</h1>
-        <Suggestion data={suggestionData} />
+    <main className="px-6">
+      <h1 className="sr-only">Comment details</h1>
+      <div className="flex items-center justify-between py-6">
+        <BackButton />
+        <EditFeedbackLink id={params.id} />
+      </div>
+      <Suggestion data={suggestionData} />
+      <div className="mt-6">
         <Comments postId={params.id} />
-      </main>
-    </>
+      </div>
+      <div>{/* <CommentReplyForm postID={params.id} parentID={null} /> */}</div>
+    </main>
   );
 }
