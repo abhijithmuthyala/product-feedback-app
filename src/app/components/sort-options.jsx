@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
 const options = [
   "most_upvotes",
   "least_upvotes",
@@ -8,6 +12,18 @@ const options = [
 ];
 
 export default function SortOptions() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useSearchParams();
+
+  function handleSortChange(e) {
+    const sort = e.target.value;
+    const searchParams = new URLSearchParams([...params.entries()]);
+    searchParams.set("sort", sort);
+
+    router.replace(`${pathname}?${searchParams}`);
+  }
+
   return (
     <div className="">
       <span>Sort by : </span>
@@ -16,6 +32,7 @@ export default function SortOptions() {
         id="sort"
         className="bg-inherit font-semibold"
         defaultValue={options[0]}
+        onChange={handleSortChange}
       >
         {options.map(function renderOption(option) {
           return (
