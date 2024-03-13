@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMenuState } from "./hamburger-menu";
 
 const bgStyle = new Map([
@@ -11,6 +11,7 @@ const bgStyle = new Map([
 export default function CategoryFilter({ category }) {
   const params = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
   const menuState = useMenuState();
 
   const selectedCategory = params.get("category") || "all";
@@ -22,8 +23,11 @@ export default function CategoryFilter({ category }) {
 
   async function updateCategory() {
     // menuState doesn't exist for viewport widths >= 768px
+    const searchParams = new URLSearchParams([...params.entries()]);
+
     menuState?.toggleMenu();
-    router.replace(`/?category=${category}`);
+    searchParams.set("category", category);
+    router.replace(`${pathname}?${searchParams}`);
   }
 
   return (
