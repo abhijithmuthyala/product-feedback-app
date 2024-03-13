@@ -7,8 +7,13 @@ const colorMap = {
   planned: "bg-status-planned",
 };
 
+type RoadmapStatType = {
+  type: string;
+  number: number;
+};
+
 export default async function RoadmapSummary({}) {
-  const roadmapStats = await getRoadmapStats();
+  const roadmapStats: RoadmapStatType = await getRoadmapStats();
 
   return (
     <article className="rounded-lg bg-neutral-0 px-6 py-6">
@@ -22,10 +27,8 @@ export default async function RoadmapSummary({}) {
         </Link>
       </header>
       <ul className="mt-6 flex flex-col gap-2">
-        {Object.entries(roadmapStats).map(function renderRoadmapStat([
-          type,
-          number,
-        ]) {
+        {Object.entries(roadmapStats).map(function renderRoadmapStat(stat) {
+          const [type, number] = stat;
           return (
             <li key={type} className="flex items-center gap-4">
               <div
