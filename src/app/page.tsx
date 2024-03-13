@@ -10,7 +10,7 @@ export default function Home({ searchParams }) {
   const { category, sort } = searchParams;
 
   const menuItem = (
-    <div className="absolute right-0 top-full col-span-2 grid gap-2.5 max-md:bg-neutral-6 md:static md:grid-cols-2 lg:grid-cols-1">
+    <div className="absolute right-0 top-full z-20 col-span-2 grid min-h-screen place-content-start gap-2.5 max-md:bg-neutral-1 max-md:px-6 max-md:py-6 md:static md:grid-cols-2 lg:grid-cols-1">
       <div className="max-md:max-w-64">
         <SuggestionsFilters className="min-h-full" />
       </div>
@@ -19,6 +19,9 @@ export default function Home({ searchParams }) {
       </div>
     </div>
   );
+  const menuOverlay = (
+    <div className="absolute left-0 right-0 top-full z-10 block min-h-screen bg-menu-overlay"></div>
+  );
 
   return (
     <main className="max-w-content mx-auto grid lg:grid-cols-[16rem_1fr] lg:gap-x-8 lg:px-body-offset">
@@ -26,8 +29,9 @@ export default function Home({ searchParams }) {
         <Header>
           <div className="md:hidden">
             <HamburgerMenu
-              className="absolute right-6 top-1/2 -translate-y-1/2 transform"
+              className="absolute right-6 top-1/2 -translate-y-1/2"
               menuItem={menuItem}
+              menuOverlay={menuOverlay}
             />
           </div>
           <div className="col-span-2 hidden md:block">{menuItem}</div>

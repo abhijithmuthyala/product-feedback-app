@@ -39,6 +39,7 @@ const config: Config = {
         "in-progress": "var(--status-in-progress)",
         live: "var(--status-live)",
       },
+      "menu-overlay": "var(--menu-overlay)",
       blue: {
         4: "var(--blue-4)",
         6: "var(--blue-6)",

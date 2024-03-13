@@ -13,6 +13,7 @@
     --neutral-6: #647196;
     --neutral-7: #3a4374;
     --neutral-8: #373f68;
+    --neutral-8-rgb: 55, 63, 104;
 
     --blue-4: #7c91f9;
     --blue-6: #4661e6;
@@ -37,6 +38,9 @@
     --status-live: var(--teal-6);
     --status-in-progress: var(--purple-9);
     --status-planned: var(--orange-8);
+
+    --menu-overlay-opacity: 0.6;
+    --menu-overlay: rgba(var(--neutral-8-rgb), var(--menu-overlay-opacity));
 
     --fw-regular: 400;
     --fw-medium: 500;
