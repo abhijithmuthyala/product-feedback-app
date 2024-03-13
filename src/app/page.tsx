@@ -1,4 +1,5 @@
-import HamburgerMenu from "./components/buttons/hamburger-menu";
+import MenuProvider from "./components/buttons/hamburger-menu";
+import MenuButton from "./components/buttons/menu-button";
 import Header from "./components/header";
 import NewSuggestionLink from "./components/new-suggestion-link";
 import RoadmapSummary from "./components/roadmap-summary";
@@ -10,7 +11,7 @@ export default function Home({ searchParams }) {
   const { category, sort } = searchParams;
 
   const menuItem = (
-    <div className="absolute right-0 top-full z-20 col-span-2 grid min-h-screen place-content-start gap-2.5 max-md:bg-neutral-1 max-md:px-6 max-md:py-6 md:static md:grid-cols-2 lg:grid-cols-1">
+    <div className="absolute right-0 top-full z-20 col-span-2 grid place-content-start gap-2.5 max-md:min-h-screen max-md:bg-neutral-1 max-md:px-6 max-md:py-6 md:static md:grid-cols-2 lg:grid-cols-1">
       <div className="max-md:max-w-64">
         <SuggestionsFilters className="min-h-full" />
       </div>
@@ -28,10 +29,16 @@ export default function Home({ searchParams }) {
       <div className="relative grid md:grid-cols-3 md:gap-x-2.5 md:px-body-offset md:pb-10 md:pt-14 lg:col-start-1 lg:auto-rows-max lg:grid-cols-1 lg:gap-x-0 lg:gap-y-2.5 lg:px-0 lg:pt-24">
         <Header>
           <div className="md:hidden">
-            <HamburgerMenu
-              className="absolute right-6 top-1/2 -translate-y-1/2"
-              menuItem={menuItem}
-              menuOverlay={menuOverlay}
+            <MenuProvider
+              button={
+                <MenuButton className="absolute right-6 top-1/2 -translate-y-1/2" />
+              }
+              content={
+                <>
+                  {menuItem}
+                  {menuOverlay}
+                </>
+              }
             />
           </div>
           <div className="col-span-2 hidden md:block">{menuItem}</div>
