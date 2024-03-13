@@ -1,35 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import { useAuthStatus } from "../auth-context";
+import { createContext, useContext, useState } from "react";
 
-const menuIcons = new Map([
-  [true, "bg-close"],
-  [false, "bg-hamburger"],
-]);
+const MenuContext = createContext(null);
 
-const ariaLabel = new Map([
-  [true, "Close menu"],
-  [false, "Open menu"],
-]);
+export function useMenuState() {
+  return useContext(MenuContext);
+}
 
-export default function HamburgerMenu({ menuItem, menuOverlay, className }) {
+export default function MenuProvider({ button, content }) {
   const [isOpen, setIsOpen] = useState(false);
-  const isAuthenticated = useAuthStatus();
 
   function toggleMenu() {
-    setIsOpen(!isOpen);
+    setIsOpen(function negateOpenState(isOpen) {
+      return !isOpen;
+    });
   }
 
   return (
-    <>
-      <button
-        className={`${menuIcons.get(isOpen)} h-4 w-5 bg-contain bg-center bg-no-repeat transition-all duration-300 ${className}`}
-        aria-label={ariaLabel.get(isOpen)}
-        onClick={toggleMenu}
-      ></button>
-      {isOpen && menuItem}
-      {isOpen && menuOverlay}
-    </>
+    <MenuContext.Provider value={{ isOpen, toggleMenu }}>
+      {button}
+      {isOpen && content}
+    </MenuContext.Provider>
   );
 }
