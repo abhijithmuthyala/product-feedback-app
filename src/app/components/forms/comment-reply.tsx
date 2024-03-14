@@ -17,6 +17,9 @@ export default function CommentReplyForm({
   async function postReply(formData) {
     startTransition(async function postCommentActionTransition() {
       await action(formData);
+      if (!pending) {
+        formRef.current?.reset();
+      }
     });
     if (onSuccess) {
       onSuccess();
