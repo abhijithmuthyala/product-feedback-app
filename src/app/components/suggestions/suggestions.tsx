@@ -1,4 +1,5 @@
 import { Category, Sort, getSuggestions } from "@/api/suggestions";
+import RequestToAddFeedback from "../request-feedback";
 import Suggestion from "./suggestion";
 
 type SuggestionsProps = {
@@ -11,6 +12,10 @@ export default async function Suggestions({
   sort = "latest",
 }: SuggestionsProps) {
   const suggestions = await getSuggestions(category, sort);
+
+  if (suggestions.length === 0) {
+    return <RequestToAddFeedback />;
+  }
 
   return (
     <section className="flex flex-col gap-y-4">

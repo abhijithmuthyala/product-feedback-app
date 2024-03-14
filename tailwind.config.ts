@@ -19,7 +19,6 @@ const config: Config = {
       semibold: "var(--fw-semibold)",
       bold: "var(--fw-bold)",
     },
-
     colors: {
       neutral: {
         0: "var(--neutral-0)",
@@ -78,6 +77,7 @@ const config: Config = {
           "url('/assets/suggestions/desktop/background-header.png')",
         "hero-tablet":
           "url('/assets/suggestions/tablet/background-header.png')",
+        empty: "url('/assets/suggestions/illustration-empty.svg')",
 
         hamburger: "url('/assets/shared/mobile/icon-hamburger.svg')",
         close: "url('/assets/shared/mobile/icon-close.svg')",
@@ -86,6 +86,13 @@ const config: Config = {
         "down-arrow": "url('/assets/shared/icon-arrow-down.svg')",
         "left-arrow": "url('/assets/shared/icon-arrow-left.svg')",
         comment: "url('/assets/shared/icon-comments.svg')",
+      },
+      maxWidth: {
+        "empty-suggestions": "26rem",
+      },
+      minHeight: {
+        "empty-suggestions-tablet": "37.5rem",
+        "empty-suggestions-mobile": "28.75rem",
       },
     },
   },
