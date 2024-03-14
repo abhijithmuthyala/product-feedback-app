@@ -16,9 +16,9 @@ export default async function DetailsPage({ params }) {
   }
 
   return (
-    <main className="px-6">
+    <main className="px-6 pb-16 pt-6">
       <h1 className="sr-only">Comment details</h1>
-      <div className="flex items-center justify-between py-6">
+      <div className="flex items-center justify-between pb-6">
         <BackButton />
         <EditFeedbackLink id={params.id} />
       </div>
@@ -26,7 +26,6 @@ export default async function DetailsPage({ params }) {
       <div className="mt-6">
         <Comments postId={params.id} />
       </div>
-      <div>{/* <CommentReplyForm postID={params.id} parentID={null} /> */}</div>
     </main>
   );
 }
