@@ -1,5 +1,6 @@
 "use client";
 
+import { categories } from "@/constants";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMenuState } from "./hamburger-menu";
 
@@ -14,7 +15,10 @@ export default function CategoryFilter({ category }) {
   const pathname = usePathname();
   const menuState = useMenuState();
 
-  const selectedCategory = params.get("category") || "all";
+  let selectedCategory = params.get("category");
+  if (!categories.includes(selectedCategory)) {
+    selectedCategory = categories[0];
+  }
   const isSelected = selectedCategory === category;
   const formattedCategory = category.replace(
     category[0],

@@ -1,20 +1,17 @@
 "use client";
 
+import { options } from "@/constants";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
-const options = [
-  "most_upvotes",
-  "least_upvotes",
-  "most_comments",
-  "least_comments",
-  "latest",
-  "oldest",
-];
 
 export default function SortOptions() {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
+
+  let selectedOption = params.get("sort");
+  if (!options.includes(selectedOption)) {
+    selectedOption = options[0];
+  }
 
   function handleSortChange(e) {
     const sort = e.target.value;
@@ -31,7 +28,7 @@ export default function SortOptions() {
         name="sort"
         id="sort"
         className="bg-inherit font-semibold"
-        defaultValue={options[0]}
+        defaultValue={selectedOption}
         onChange={handleSortChange}
       >
         {options.map(function renderOption(option) {
