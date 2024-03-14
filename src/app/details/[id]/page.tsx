@@ -20,7 +20,7 @@ export default async function DetailsPage({ params }) {
       <h1 className="sr-only">Comment details</h1>
       <div className="flex items-center justify-between pb-6 text-sm md:px-0.5">
         <BackButton />
-        <EditFeedbackLink id={params.id} />
+        {suggestionData.owner && <EditFeedbackLink id={params.id} />}
       </div>
       <Suggestion data={suggestionData} />
       <div className="mt-6">
