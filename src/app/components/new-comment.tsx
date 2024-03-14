@@ -8,7 +8,6 @@ export default function NewCommentForm({ postID }) {
   return (
     <CommentReplyForm
       action={postCommentReply.bind(null, null, postID)}
-      onSuccess={function () {}}
       postButton={<PostCommentButton>Post comment</PostCommentButton>}
     />
   );
