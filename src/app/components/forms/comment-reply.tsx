@@ -1,24 +1,32 @@
 "use client";
 
-import { useTransition } from "react";
-import PostCommentButton from "../buttons/post-comment";
+import { useRef, useTransition } from "react";
 import TextArea from "../text-area";
 
-export default function CommentReplyForm({ onSuccess, action }) {
+export default function CommentReplyForm({
+  onSuccess = null,
+  action,
+  postButton,
+}) {
   // using a transition results in a better ux - the new
   // comment appears immediately after the form is closed.
   // TODO: THIS FEELS LIKE A BLACK BOX. EXPLORE MORE!
   const [pending, startTransition] = useTransition();
+  const formRef = useRef(null);
 
   async function postReply(formData) {
-    startTransition(action(formData));
-    onSuccess();
+    startTransition(async function postCommentActionTransition() {
+      await action(formData);
+    });
+    if (onSuccess) {
+      onSuccess();
+    }
   }
 
   return (
-    <form action={postReply} className="grid gap-y-2">
+    <form action={postReply} className="grid gap-y-2" ref={formRef}>
       <TextArea placeholder="Type your comment here" />
-      <PostCommentButton>Post comment</PostCommentButton>
+      {postButton}
     </form>
   );
 }

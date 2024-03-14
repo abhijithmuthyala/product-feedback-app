@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 
 import { postCommentReply } from "@/actions/post-comment";
 import { useAuthStatus } from "../auth-context";
+import PostCommentButton from "../buttons/post-comment";
 import ReplyButton from "../buttons/reply";
 import CommentReplyForm from "../forms/comment-reply";
 import UserProfile from "../user-profile";
@@ -34,7 +35,7 @@ export default function Comment({
         <UserProfile data={userData} />
         <ReplyButton onClick={toggleReplyForm} />
       </div>
-      <p className="mt-4 text-sm text-neutral-6">
+      <p className="mb-6 mt-4 text-sm text-neutral-6">
         {parentUserName && (
           <span className="font-semibold text-primary">@{parentUserName}</span>
         )}{" "}
@@ -45,6 +46,7 @@ export default function Comment({
           <CommentReplyForm
             onSuccess={toggleReplyForm}
             action={postCommentReply.bind(null, replyParentID, postID)}
+            postButton={<PostCommentButton>Post reply</PostCommentButton>}
           />
         </div>
       )}
@@ -69,7 +71,7 @@ export default function Comment({
           </LevelContextProvider>
         </div>
       )}
-      {!isLastComment && <hr className="mt-6 border-neutral-4" />}
+      {!isLastComment && <hr className="mt-8 border-neutral-4" />}
     </article>
   );
 }
