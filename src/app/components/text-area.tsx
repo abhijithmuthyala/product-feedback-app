@@ -8,7 +8,7 @@ export default function TextArea({ placeholder = "", ...props }) {
           name="comment"
           id="comment"
           placeholder={placeholder}
-          className="min-h-20 w-full rounded-md bg-inherit text-base text-neutral-7 placeholder:text-sm placeholder:text-neutral-5"
+          className="min-h-20 w-full rounded-md bg-inherit text-base text-neutral-7 placeholder:text-sm placeholder:text-neutral-5 md:placeholder:text-base"
           {...props}
         ></textarea>
       </label>

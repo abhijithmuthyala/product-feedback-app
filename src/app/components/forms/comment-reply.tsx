@@ -27,7 +27,7 @@ export default function CommentReplyForm({
   }
 
   return (
-    <form action={postReply} className="grid gap-y-2" ref={formRef}>
+    <form action={postReply} className="grid gap-y-4" ref={formRef}>
       <TextArea placeholder="Type your comment here" />
       {postButton}
     </form>
