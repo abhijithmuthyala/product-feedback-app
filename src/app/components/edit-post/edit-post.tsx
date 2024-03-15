@@ -1,6 +1,6 @@
 "use client";
 
-import { categories, status } from "@/constants";
+import { categories, postStates } from "@/constants";
 import EditPostActions from "./actions";
 
 export default function EditPostForm({ postData }) {
@@ -46,11 +46,8 @@ export default function EditPostForm({ postData }) {
       </div>
       <div className="grid gap-y-4">
         <h3 className="flex flex-col">
-          <span className="font-bold text-neutral-7">Feedback detail</span>
-          <span className="text-neutral-6">
-            Include any specific comments on what should be improved, added,
-            etc.
-          </span>
+          <span className="font-bold text-neutral-7">Update Status</span>
+          <span className="text-neutral-6">Change feature state</span>
         </h3>
         <select
           name="status"
@@ -59,7 +56,7 @@ export default function EditPostForm({ postData }) {
           required
           className="appearance-none rounded-md bg-neutral-1 bg-down-arrow bg-[length:.8rem_.4rem] bg-[center_right_1.5rem] bg-no-repeat px-4 py-4"
         >
-          {status.map(function renderStatus(name) {
+          {postStates.map(function renderStatus(name) {
             return (
               <option value={name} key={name}>
                 {name}

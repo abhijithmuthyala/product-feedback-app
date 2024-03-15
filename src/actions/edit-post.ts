@@ -1,5 +1,6 @@
 "use server";
 
+import { nextPostID } from "@/supabase/functions";
 import { createClient } from "@/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -39,4 +40,22 @@ export async function updatePost(postID, formData) {
   }
 
   redirect("/details/" + postID);
+}
+
+export async function insertPost(formData) {
+  const supabase = createClient();
+
+  try {
+    const { data: nextID } = await supabase.rpc(nextPostID);
+    await supabase.from("suggestions").insert({
+      title: formData.get("title"),
+      category: formData.get("category"),
+      description: formData.get("description"),
+      status: "suggestion",
+      id: nextID,
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
+  redirect("/");
 }
