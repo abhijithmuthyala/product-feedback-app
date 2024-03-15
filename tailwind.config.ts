@@ -38,6 +38,10 @@ const config: Config = {
         "in-progress": "var(--status-in-progress)",
         live: "var(--status-live)",
       },
+      delete: "var(--delete-btn)",
+      save: "var(--save-btn)",
+      cancel: "var(--cancel-btn)",
+
       "menu-overlay": "var(--menu-overlay)",
       blue: {
         4: "var(--blue-4)",
@@ -69,6 +73,7 @@ const config: Config = {
       },
       spacing: {
         "body-offset": "var(--body-offset)",
+        30: "7.5rem",
       },
       backgroundImage: {
         "hero-mobile":
@@ -78,6 +83,7 @@ const config: Config = {
         "hero-tablet":
           "url('/assets/suggestions/tablet/background-header.png')",
         empty: "url('/assets/suggestions/illustration-empty.svg')",
+        edit: "url('/assets/shared/icon-edit-feedback.svg')",
 
         hamburger: "url('/assets/shared/mobile/icon-hamburger.svg')",
         close: "url('/assets/shared/mobile/icon-close.svg')",
@@ -89,10 +95,12 @@ const config: Config = {
       },
       maxWidth: {
         "empty-suggestions": "26rem",
+        "edit-form": "33.75rem",
       },
       minHeight: {
         "empty-suggestions-tablet": "37.5rem",
         "empty-suggestions-mobile": "28.75rem",
+        30: "7.5rem",
       },
     },
   },

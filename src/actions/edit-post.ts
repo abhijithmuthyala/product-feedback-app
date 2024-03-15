@@ -20,6 +20,8 @@ export async function deletePost(postID) {
 }
 
 export async function updatePost(postID, formData) {
+  // actual uid of post id 10 eecc2900-6268-4b4a-ba66-8dfe7ad4df43
+
   const supabase = createClient();
   const { data, error } = await supabase
     .from("suggestions")
