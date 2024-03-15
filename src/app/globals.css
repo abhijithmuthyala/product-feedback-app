@@ -39,6 +39,10 @@
     --status-in-progress: var(--purple-9);
     --status-planned: var(--orange-8);
 
+    --delete-btn: var(--red-9);
+    --cancel-btn: var(--neutral-7);
+    --save-btn: var(--purple-9);
+
     --menu-overlay-opacity: 0.6;
     --menu-overlay: rgba(var(--neutral-8-rgb), var(--menu-overlay-opacity));
 
