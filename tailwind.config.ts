@@ -84,6 +84,7 @@ const config: Config = {
           "url('/assets/suggestions/tablet/background-header.png')",
         empty: "url('/assets/suggestions/illustration-empty.svg')",
         edit: "url('/assets/shared/icon-edit-feedback.svg')",
+        new: "url('/assets/shared/icon-new-feedback.svg')",
 
         hamburger: "url('/assets/shared/mobile/icon-hamburger.svg')",
         close: "url('/assets/shared/mobile/icon-close.svg')",

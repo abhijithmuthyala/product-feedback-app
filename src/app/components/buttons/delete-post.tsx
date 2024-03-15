@@ -12,7 +12,7 @@ export default function DeletePostButton({ postID }) {
       formAction={deleteAction}
       className="rounded-md bg-delete px-5 py-2.5 font-bold text-neutral-1"
     >
-      {pending && formAction === deleteAction ? "Deleting..." : "Delete Post"}
+      {pending ? "Deleting..." : "Delete Post"}
     </button>
   );
 }

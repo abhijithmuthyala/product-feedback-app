@@ -1,17 +1,11 @@
 "use client";
 
 import { updatePost } from "@/actions/edit-post";
-import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
 
 export default function UpdatePostButton({ postID }) {
   const { pending, action: formAction } = useFormStatus();
-  const router = useRouter();
-
-  async function submitAction(formData) {
-    await updatePost(postID, formData);
-    router.push(`/details/${postID}`);
-  }
+  const submitAction = updatePost.bind(null, postID);
 
   return (
     <button
