@@ -24,6 +24,7 @@ export default function Comment({
   const postID = data.comment_post_id;
   const userData = data.user_data;
   const numReplies = data.replies?.length ?? 0;
+  const replyingTo = data.replying_to;
 
   function toggleReplyForm() {
     if (!isAuthenticated) return;
@@ -42,9 +43,7 @@ export default function Comment({
         </div>
         <p className="col-span-full text-sm text-neutral-6 md:col-start-2 md:text-base">
           {parentUserName && (
-            <span className="font-semibold text-primary">
-              @{parentUserName}
-            </span>
+            <span className="font-semibold text-primary">@{replyingTo}</span>
           )}{" "}
           {data.comment}
         </p>
@@ -53,7 +52,7 @@ export default function Comment({
         <div className="mt-4">
           <CommentReplyForm
             onSuccess={toggleReplyForm}
-            action={postCommentReply.bind(null, replyParentID, postID)}
+            action={postCommentReply.bind(null, replyParentID, data.id, postID)}
             postButton={<PostCommentButton>Post reply</PostCommentButton>}
           />
         </div>
