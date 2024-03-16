@@ -1,22 +1,11 @@
-import { handleLogin, handleSignup } from "../../actions/login";
-import SignInButton from "../components/buttons/sign-in";
-import SignUpButton from "../components/buttons/sign-up";
+import AuthForm from "../components/auth-form";
 
 export default async function LoginPage() {
   return (
-    <>
-      <form>
-        <label htmlFor="email">
-          Enter your email
-          <input type="email" name="email" id="email" />
-        </label>
-        <label htmlFor="pw">
-          Enter your password
-          <input type="password" name="pw" id="pw" />
-        </label>
-        <SignUpButton formAction={handleSignup} />
-        <SignInButton formAction={handleLogin} />
-      </form>
-    </>
+    <main className="py-12">
+      <section className="mx-auto max-w-lg rounded-lg bg-neutral-1 px-6 py-6 shadow-md shadow-neutral-4">
+        <AuthForm />
+      </section>
+    </main>
   );
 }

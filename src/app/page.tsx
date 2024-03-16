@@ -1,14 +1,18 @@
+import { getAuthStatus } from "@/supabase/server";
 import MenuProvider from "./components/buttons/hamburger-menu";
 import MenuButton from "./components/buttons/menu-button";
+import SignOutButton from "./components/buttons/sign-out";
 import Header from "./components/header";
+import LoginLink from "./components/login-link";
 import NewSuggestionLink from "./components/new-suggestion-link";
 import RoadmapSummary from "./components/roadmap-summary";
 import SortOptions from "./components/sort-options";
 import SuggestionsFilters from "./components/suggestions-filters";
 import Suggestions from "./components/suggestions/suggestions";
 
-export default function Home({ searchParams }) {
+export default async function Home({ searchParams }) {
   const { category, sort } = searchParams;
+  const isAuthenticated = await getAuthStatus();
 
   const menuItem = (
     <div className="absolute right-0 top-full z-20 col-span-2 grid place-content-start gap-2.5 max-md:min-h-screen max-md:bg-neutral-1 max-md:px-6 max-md:py-6 md:static md:grid-cols-2 lg:grid-cols-1">
@@ -48,7 +52,14 @@ export default function Home({ searchParams }) {
         <div className="bg-neutral-8 px-body-offset md:bg-inherit lg:px-0">
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-md py-2 text-sm text-neutral-1 md:bg-neutral-8 md:px-6 md:py-3.5">
             <SortOptions />
-            <NewSuggestionLink />
+            {isAuthenticated ? (
+              <div className="flex items-center gap-2">
+                <SignOutButton />
+                <NewSuggestionLink />
+              </div>
+            ) : (
+              <LoginLink />
+            )}
           </div>
         </div>
         <div className="px-body-offset py-8 md:py-6 lg:px-0">
