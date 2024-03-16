@@ -19,7 +19,7 @@ export default async function DetailsPage({ params }) {
     <main className="mx-auto max-w-[730px] px-6 pb-16 pt-6 md:pt-14 lg:px-0 lg:pt-20">
       <h1 className="sr-only">Comment details</h1>
       <div className="flex items-center justify-between pb-6 text-sm md:px-0.5">
-        <BackButton />
+        <BackButton className="text-neutral-6" />
         {suggestionData.owner && <EditFeedbackLink id={params.id} />}
       </div>
       <Suggestion data={suggestionData} />

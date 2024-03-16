@@ -1,4 +1,4 @@
-import { suggestions } from "@/supabase/functions";
+import { suggestions, suggestions_by_status } from "@/supabase/functions";
 import { createClient } from "@/supabase/server";
 
 export type Category = "all" | "ui" | "ux" | "enhancement" | "bug" | "feature";
@@ -23,5 +23,21 @@ export async function getSuggestions(category: Category, sort: Sort) {
     return data;
   } catch (error) {
     throw new Error(error);
+  }
+}
+
+export async function getPostsByRoadmapStatus(status) {
+  const supabase = createClient();
+
+  try {
+    const { data, error } = await supabase.rpc(suggestions_by_status, {
+      status_param: status,
+    });
+    if (!data || error) {
+      throw new Error(error.message);
+    }
+    return data;
+  } catch (error) {
+    console.error(error);
   }
 }

@@ -73,6 +73,7 @@ const config: Config = {
       },
       spacing: {
         "body-offset": "var(--body-offset)",
+        "6.5": "1.625rem",
         30: "7.5rem",
       },
       backgroundImage: {
