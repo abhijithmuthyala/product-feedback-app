@@ -16,8 +16,8 @@ export default async function EditPage({ params }) {
     <>
       <main className="mx-auto max-w-edit-form px-6 pb-20 pt-8 md:pb-30 md:pt-14 lg:pb-32 lg:pt-24">
         <h1 className="sr-only">Update or delete feedback</h1>
-        <div className="">
-          <BackButton />
+        <div>
+          <BackButton className="text-neutral-6" />
         </div>
         <div className="relative mt-14 rounded-lg bg-neutral-0 px-6 pb-6 pt-11">
           <div className="absolute left-6 top-0 aspect-square w-8 -translate-y-1/2 bg-edit bg-contain bg-center bg-no-repeat"></div>

@@ -12,3 +12,9 @@ export const options = [
   "latest",
   "oldest",
 ];
+
+export const descriptions = {
+  live: "Released features",
+  "in-progress": "Currently being developed",
+  planned: "Ideas prioritized for research",
+};
