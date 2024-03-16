@@ -1,12 +1,16 @@
 import { getRoadmapStats } from "@/api/roadmap-stats";
 import { roadmapStates } from "@/constants";
+import { getAuthStatus } from "@/supabase/server";
 import BackButton from "../components/buttons/back";
 import AddNewPostButton from "../components/buttons/new-post";
+import LoginLink from "../components/login-link";
 import RoadmapStatusTabs from "../components/roadmap-status-tabs";
 import RoadmapSuggestionsSection from "../components/roadmap-suggestions";
 
 export default async function RoadmapPage({ searchParams }) {
   const stats = await getRoadmapStats();
+  const isAuthenticated = await getAuthStatus();
+
   let { status } = searchParams;
   if (!status || !roadmapStates.includes(status)) {
     status = "live";
@@ -21,7 +25,7 @@ export default async function RoadmapPage({ searchParams }) {
           <BackButton className="text-neutral-0" />
           <h1 className="text-lg font-bold text-neutral-0">Roadmap</h1>
         </div>
-        <AddNewPostButton />
+        {isAuthenticated ? <AddNewPostButton /> : <LoginLink />}
       </header>
       <RoadmapStatusTabs stats={stats} activeStatus={status} />
       <div className="px-6 py-6 md:px-0">

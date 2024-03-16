@@ -3,19 +3,23 @@
 import { headers } from "next/headers";
 
 import { createClient } from "@/supabase/server";
-import { redirect } from "next/navigation";
 
 export async function handleLogin(formData) {
   const email = formData.get("email");
   const password = formData.get("pw");
 
   const supabase = createClient();
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  redirect("/");
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (!data || error) {
+      throw new Error(error.message);
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 export async function handleSignup(formData) {
@@ -24,17 +28,20 @@ export async function handleSignup(formData) {
 
   const origin = headers().get("origin");
   const supabase = createClient();
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      emailRedirectTo: `${origin}/auth/callback`,
-    },
-  });
 
-  if (error) {
-    return console.error("Error signing up:", error.message);
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${origin}/auth/callback`,
+      },
+    });
+
+    if (!data || error) {
+      throw new Error(error.message);
+    }
+  } catch (error) {
+    throw new Error(error);
   }
-
-  redirect("/");
 }
