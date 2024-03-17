@@ -25,6 +25,9 @@ export async function handleLogin(formData) {
 export async function handleSignup(formData) {
   const email = formData.get("email");
   const password = formData.get("pw");
+  const firstname = formData.get("firstname");
+  const lastname = formData.get("lastname");
+  const username = firstname + "_" + lastname;
 
   const origin = headers().get("origin");
   const supabase = createClient();
@@ -40,6 +43,20 @@ export async function handleSignup(formData) {
 
     if (!data || error) {
       throw new Error(error.message);
+    }
+
+    const { data: nextUserID } = await supabase.rpc("get_next_user_id");
+    const { data: newUserData, error: newUserError } = await supabase
+      .from("user_info")
+      .insert({
+        id: nextUserID,
+        email: email,
+        first_name: firstname,
+        last_name: lastname,
+        username: username,
+      });
+    if (!newUserData || newUserError) {
+      throw new Error(newUserError.message);
     }
   } catch (error) {
     throw new Error(error);
