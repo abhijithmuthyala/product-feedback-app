@@ -44,3 +44,10 @@
 - Cody AI autocomplete for VSCode.
 - ChatGPT for generating RPC functions in supabase.
 - Polypane browser to match the original design.
+
+## Code consistency and formatting
+
+- Prettier
+- Prettier plugin tailwind
+- ES Lint
+- Lint staged - To format the code before every commit
