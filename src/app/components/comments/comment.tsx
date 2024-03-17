@@ -52,7 +52,7 @@ export default function Comment({
         <div className="mt-4">
           <CommentReplyForm
             onSuccess={toggleReplyForm}
-            action={postCommentReply.bind(null, replyParentID, data.id, postID)}
+            action={postCommentReply.bind(null, replyParentID, postID, data.id)}
             postButton={<PostCommentButton>Post reply</PostCommentButton>}
           />
         </div>
