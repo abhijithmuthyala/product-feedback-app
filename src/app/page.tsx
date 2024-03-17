@@ -61,7 +61,9 @@ export default async function Home({ searchParams }) {
             <SortOptions />
             {isAuthenticated ? (
               <div className="flex items-center gap-2">
-                <SignOutButton />
+                <form>
+                  <SignOutButton />
+                </form>
                 <NewSuggestionLink />
               </div>
             ) : (

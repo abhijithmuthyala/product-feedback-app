@@ -46,6 +46,8 @@
     --menu-overlay-opacity: 0.6;
     --menu-overlay: rgba(var(--neutral-8-rgb), var(--menu-overlay-opacity));
 
+    --action-loading-rgb: 40, 167, 237;
+
     --fw-regular: 400;
     --fw-medium: 500;
     --fw-semibold: 600;
@@ -61,6 +63,18 @@
     --text-body: var(--neutral-7);
   }
 
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 0 4px rgba(var(--action-loading-rgb), 0.25);
+    }
+    50% {
+      box-shadow: 0 0 0 3px rgba(var(--action-loading-rgb), 0.5);
+    }
+    100% {
+      box-shadow: 0 0 0 2px rgba(var(--action-loading-rgb), 0.75);
+    }
+  }
+
   @media screen and (min-width: 768px) {
     :root {
       --body-offset: 2.5rem;
@@ -71,5 +85,9 @@
 @layer utilities {
   .max-w-content {
     max-width: 1192px;
+  }
+
+  .animate-glow {
+    animation: glow 0.5s infinite alternate;
   }
 }
