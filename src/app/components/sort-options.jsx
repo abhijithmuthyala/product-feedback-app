@@ -24,6 +24,9 @@ export default function SortOptions() {
   return (
     <div className="">
       <span>Sort by : </span>
+      <label htmlFor="sort" className="sr-only">
+        Filter by
+      </label>
       <select
         name="sort"
         id="sort"

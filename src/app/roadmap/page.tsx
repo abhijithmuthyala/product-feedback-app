@@ -7,6 +7,14 @@ import LoginLink from "../components/login-link";
 import RoadmapStatusTabs from "../components/roadmap-status-tabs";
 import RoadmapSuggestionsSection from "../components/roadmap-suggestions";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product feedback | Roadmap",
+  description:
+    "Roadmap representing the status of feedbacks received from users.",
+};
+
 export default async function RoadmapPage({ searchParams }) {
   const stats = await getRoadmapStats();
   const isAuthenticated = await getAuthStatus();

@@ -3,6 +3,13 @@ import BackButton from "../components/buttons/back";
 import CancelButton from "../components/buttons/cancel-edit";
 import AddNewPostButton from "../components/buttons/new-post";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product Feedback | New",
+  description: "Add your valuable feedback on the app",
+};
+
 export default function NewSuggestionPage() {
   return (
     <main className="mx-auto max-w-edit-form px-6 pb-20 pt-8 md:pb-30 md:pt-14 lg:pb-32 lg:pt-24">
