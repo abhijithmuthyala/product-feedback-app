@@ -9,6 +9,11 @@ const bgStyle = new Map([
   [false, "bg-neutral-1 text-secondary"],
 ]);
 
+const actionStyle = new Map([
+  [true, "animate-glow"],
+  [false, ""],
+]);
+
 export default function CategoryFilter({ category }) {
   const params = useSearchParams();
   const router = useRouter();

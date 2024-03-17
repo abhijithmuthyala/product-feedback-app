@@ -2,9 +2,11 @@
 
 import { handleSignup } from "@/actions/login";
 import { useRouter } from "next/navigation";
+import { useFormStatus } from "react-dom";
 
 export default function SignUpButton({}) {
   const router = useRouter();
+  const { pending } = useFormStatus();
 
   async function signup(formData) {
     await handleSignup(formData);
@@ -17,7 +19,7 @@ export default function SignUpButton({}) {
       formAction={signup}
       className="rounded-md bg-secondary px-3 py-2 text-base font-bold text-neutral-1"
     >
-      Signup
+      {pending ? "Signing up..." : "Signup"}
     </button>
   );
 }

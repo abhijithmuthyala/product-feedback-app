@@ -3,30 +3,39 @@
 import { usePathname, useRouter } from "next/navigation";
 
 import { createClient } from "@/supabase/client";
+import { useFormStatus } from "react-dom";
 
 export default function SignOutButton() {
   const router = useRouter();
   const pathname = usePathname();
+  const { pending } = useFormStatus();
 
   async function handleSignout() {
     const supabase = createClient();
-    const data = await supabase.auth.signOut();
+    try {
+      const { error } = await supabase.auth.signOut();
 
-    // push only if in a different route other than /
-    // refresh takes care of the / route
-    if (pathname !== "/") {
-      return router.push("/");
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      // push only if in a different route other than /
+      // refresh takes care of the / route
+      if (pathname !== "/") {
+        router.push("/");
+      }
+      router.refresh();
+    } catch (error) {
+      console.error(error);
     }
-    // TODO: Figure out alternate approach. revalidatePath()?
-    router.refresh();
   }
 
   return (
     <button
-      onClick={handleSignout}
+      formAction={handleSignout}
       className="rounded-md bg-delete px-4 py-2.5 text-sm font-bold text-neutral-1"
     >
-      Signout
+      {pending ? "Signing out..." : "Signout"}
     </button>
   );
 }

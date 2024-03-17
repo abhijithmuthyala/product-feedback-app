@@ -29,11 +29,13 @@ export default async function Suggestion({ data, asLink = false }) {
         <CategoryTag category={data.category} />
       </div>
       <div className="sm:row-start-1">
-        <UpvoteButton
-          upvotes={data.upvotes_count}
-          upvoted={data.upvoted}
-          postID={data.id}
-        />
+        <form>
+          <UpvoteButton
+            upvotes={data.upvotes_count}
+            upvoted={data.upvoted}
+            postID={data.id}
+          />
+        </form>
       </div>
       <div className="col-start-3 self-center sm:row-start-1">
         <SuggestionCommentsNumber numComments={data.comments_count} />
