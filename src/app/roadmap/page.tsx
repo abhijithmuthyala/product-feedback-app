@@ -3,9 +3,9 @@ import { roadmapStates } from "@/constants";
 import { getAuthStatus } from "@/supabase/server";
 import BackButton from "../components/buttons/back";
 import AddNewPostButton from "../components/buttons/new-post";
-import LoginLink from "../components/login-link";
-import RoadmapStatusTabs from "../components/roadmap-status-tabs";
-import RoadmapSuggestionsSection from "../components/roadmap-suggestions";
+import LoginLink from "../components/links/login-link";
+import RoadmapStatusTabs from "../components/roadmap/roadmap-status-tabs";
+import RoadmapSuggestionsSection from "../components/roadmap/roadmap-suggestions";
 
 import type { Metadata } from "next";
 

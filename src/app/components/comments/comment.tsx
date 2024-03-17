@@ -4,11 +4,11 @@ import { useContext, useState } from "react";
 
 import { postCommentReply } from "@/actions/post-comment";
 import { useAuthStatus } from "../auth-context";
-import Avatar from "../avatar";
 import PostCommentButton from "../buttons/post-comment";
 import ReplyButton from "../buttons/reply";
 import CommentReplyForm from "../forms/comment-reply";
-import UserProfile from "../user-profile";
+import Avatar from "../user/avatar";
+import UserProfile from "../user/user-profile";
 import { LevelContext, LevelContextProvider } from "./level-context";
 
 export default function Comment({

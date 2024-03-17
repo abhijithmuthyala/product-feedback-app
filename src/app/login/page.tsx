@@ -1,4 +1,4 @@
-import AuthForm from "../components/auth-form";
+import AuthForm from "../components/forms/auth-form";
 
 import type { Metadata } from "next";
 

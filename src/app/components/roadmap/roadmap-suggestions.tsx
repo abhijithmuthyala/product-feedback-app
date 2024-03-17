@@ -1,6 +1,6 @@
 import { getPostsByRoadmapStatus } from "@/api/suggestions";
 import { descriptions } from "@/constants";
-import Suggestion from "./suggestions/suggestion";
+import Suggestion from "../suggestions/suggestion";
 
 export default async function RoadmapSuggestionsSection({ status }) {
   const suggestions = await getPostsByRoadmapStatus(status);

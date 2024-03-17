@@ -1,5 +1,5 @@
 import { categoryFilters } from "@/constants";
-import CategoryFilter from "./buttons/category-filter";
+import CategoryFilter from "../buttons/category-filter";
 
 export default function SuggestionsFilters({ className }) {
   return (

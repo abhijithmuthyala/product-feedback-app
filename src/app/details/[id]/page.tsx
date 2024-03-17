@@ -5,8 +5,8 @@ import Suggestion from "@/app/components/suggestions/suggestion";
 
 import { getSuggestion } from "@/api/suggestion";
 import BackButton from "@/app/components/buttons/back";
-import EditFeedbackLink from "@/app/components/edit-feedback-link";
-import LoginLink from "@/app/components/login-link";
+import EditFeedbackLink from "@/app/components/links/edit-feedback-link";
+import LoginLink from "@/app/components/links/login-link";
 import { getAuthStatus } from "@/supabase/server";
 
 import type { Metadata } from "next";

@@ -1,4 +1,4 @@
-import NewSuggestionLink from "./new-suggestion-link";
+import NewSuggestionLink from "../links/new-suggestion-link";
 
 export default function RequestToAddFeedback() {
   return (

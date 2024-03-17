@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import LoginForm from "./forms/login-form";
-import RegisterForm from "./forms/register-form";
+import LoginForm from "./login-form";
+import RegisterForm from "./register-form";
 
 const forms = {
   login: LoginForm,

@@ -5,7 +5,7 @@ import { LevelContextProvider } from "./level-context";
 
 import { getComments } from "@/api/comments";
 import { getAuthStatus } from "@/supabase/server";
-import NewCommentForm from "../new-comment";
+import NewCommentForm from "./new-comment";
 
 export default async function Comments({ postId }) {
   let comments;

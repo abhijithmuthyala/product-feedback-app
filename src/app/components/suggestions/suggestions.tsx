@@ -1,5 +1,5 @@
 import { Category, Sort, getSuggestions } from "@/api/suggestions";
-import RequestToAddFeedback from "../request-feedback";
+import RequestToAddFeedback from "./request-feedback";
 import Suggestion from "./suggestion";
 
 type SuggestionsProps = {
