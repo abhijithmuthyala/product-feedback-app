@@ -10,6 +10,13 @@ import SortOptions from "./components/sort-options";
 import SuggestionsFilters from "./components/suggestions-filters";
 import Suggestions from "./components/suggestions/suggestions";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product Feedback App",
+  description: "Let your users provide valuable feedback on your app.",
+};
+
 export default async function Home({ searchParams }) {
   const { category, sort } = searchParams;
   const isAuthenticated = await getAuthStatus();

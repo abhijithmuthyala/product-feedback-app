@@ -4,6 +4,13 @@ import EditPostForm from "@/app/components/edit-post/edit-post";
 import { getAuthStatus } from "@/supabase/server";
 import { notFound } from "next/navigation";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product Feedback | Edit",
+  description: "Edit your own feedback",
+};
+
 export default async function EditPage({ params }) {
   const isAuthenticated = await getAuthStatus();
   const postData = await getSuggestion(params.id);

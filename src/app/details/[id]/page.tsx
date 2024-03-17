@@ -9,6 +9,13 @@ import EditFeedbackLink from "@/app/components/edit-feedback-link";
 import LoginLink from "@/app/components/login-link";
 import { getAuthStatus } from "@/supabase/server";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product Feedback | Details",
+  description: "Discussion on the feedback provided",
+};
+
 export default async function DetailsPage({ params }) {
   let suggestionData;
   try {

@@ -1,5 +1,12 @@
 import AuthForm from "../components/auth-form";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product Feedback | Login",
+  description: "Login to upvote, comment and add feedback",
+};
+
 export default async function LoginPage() {
   return (
     <main className="min-h-screen px-6 py-12">
