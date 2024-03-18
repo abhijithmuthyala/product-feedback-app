@@ -46,16 +46,15 @@ export async function handleSignup(formData) {
     }
 
     const { data: nextUserID } = await supabase.rpc("get_next_user_id");
-    const { data: newUserData, error: newUserError } = await supabase
-      .from("user_info")
-      .insert({
-        id: nextUserID,
-        email: email,
-        first_name: firstname,
-        last_name: lastname,
-        username: username,
-      });
-    if (!newUserData || newUserError) {
+    const { error: newUserError } = await supabase.from("user_info").insert({
+      id: nextUserID,
+      email: email,
+      first_name: firstname,
+      last_name: lastname,
+      username: username,
+    });
+
+    if (newUserError) {
       throw new Error(newUserError.message);
     }
   } catch (error) {
