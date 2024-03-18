@@ -1,24 +1,15 @@
 import { getAuthStatus } from "@/supabase/server";
-import MenuProvider from "./components/buttons/hamburger-menu";
-import MenuButton from "./components/buttons/menu-button";
-import SignOutButton from "./components/buttons/sign-out";
-import SortOptions from "./components/filters/sort-options";
-import SuggestionsFilters from "./components/filters/suggestions-filters";
-import Header from "./components/header";
-import LoginLink from "./components/links/login-link";
-import NewSuggestionLink from "./components/links/new-suggestion-link";
-import RoadmapSummary from "./components/roadmap/roadmap-summary";
-import Suggestions from "./components/suggestions/suggestions";
+import MenuProvider from "../components/buttons/hamburger-menu";
+import MenuButton from "../components/buttons/menu-button";
+import SignOutButton from "../components/buttons/sign-out";
+import SortOptions from "../components/filters/sort-options";
+import SuggestionsFilters from "../components/filters/suggestions-filters";
+import Header from "../components/header";
+import LoginLink from "../components/links/login-link";
+import NewSuggestionLink from "../components/links/new-suggestion-link";
+import RoadmapSummary from "../components/roadmap/roadmap-summary";
 
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Product Feedback App",
-  description: "Let your users provide valuable feedback on your app.",
-};
-
-export default async function Home({ searchParams }) {
-  const { category, sort } = searchParams;
+export default async function HomeLayout({ children }) {
   const isAuthenticated = await getAuthStatus();
 
   const menuItem = (
@@ -71,9 +62,7 @@ export default async function Home({ searchParams }) {
             )}
           </div>
         </div>
-        <div className="px-body-offset py-8 md:py-6 lg:px-0">
-          <Suggestions category={category} sort={sort} />
-        </div>
+        <div className="px-body-offset py-8 md:py-6 lg:px-0">{children}</div>
       </div>
     </main>
   );
