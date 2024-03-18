@@ -7,10 +7,22 @@ type SuggestionsProps = {
   sort: Sort;
 };
 
+function wait(ms) {
+  return new Promise((res) => {
+    setTimeout(res, ms);
+  });
+}
+
 export default async function Suggestions({
   category = "all",
   sort = "latest",
 }: SuggestionsProps) {
+  /*
+  TODO: The loading skeletons only work with this artificial 
+  delay added. Why!?
+  */
+  await wait(1000);
+
   const suggestions = await getSuggestions(category, sort);
 
   if (suggestions.length === 0) {
