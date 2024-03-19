@@ -5,6 +5,7 @@
   - Server Actions
   - Revalidation
   - React server and client components
+  - Suspense and useFormStatus hook for loading states
 
 - Supabase
   - Auth
