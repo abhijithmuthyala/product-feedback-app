@@ -7,12 +7,6 @@ type SuggestionsProps = {
   sort: Sort;
 };
 
-function wait(ms) {
-  return new Promise((res) => {
-    setTimeout(res, ms);
-  });
-}
-
 export default async function Suggestions({
   category = "all",
   sort = "latest",

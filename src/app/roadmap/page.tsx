@@ -8,6 +8,8 @@ import RoadmapStatusTabs from "../components/roadmap/roadmap-status-tabs";
 import RoadmapSuggestionsSection from "../components/roadmap/roadmap-suggestions";
 
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import SuggestionsSkeleton from "../components/skeletons/suggestions";
 
 export const metadata: Metadata = {
   title: "Product feedback | Roadmap",
@@ -37,7 +39,9 @@ export default async function RoadmapPage({ searchParams }) {
       </header>
       <RoadmapStatusTabs stats={stats} activeStatus={status} />
       <div className="px-6 py-6 md:px-0">
-        <RoadmapSuggestionsSection status={status} />
+        <Suspense fallback={<SuggestionsSkeleton />} key={status}>
+          <RoadmapSuggestionsSection status={status} />
+        </Suspense>
       </div>
     </main>
   );
