@@ -1,3 +1,15 @@
+export default function SuggestionsSkeleton({ numberOfSkeletons = 5 }) {
+  return (
+    <div className="flex flex-col gap-y-4">
+      {Array.from({ length: numberOfSkeletons }).map(
+        function renderSkeleton(_, i) {
+          return <SuggestionSkeleton key={i} />;
+        },
+      )}
+    </div>
+  );
+}
+
 /*
 TODO: 
 
@@ -7,7 +19,7 @@ random skeleton that looks close-enough instead? Or the good-old
 spinner should work just as fine 🤷
 */
 
-export default function SuggestionsSkeleton({}) {
+function SuggestionSkeleton({}) {
   return (
     <article className="grid min-h-30 grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-y-4 rounded-lg bg-neutral-0 px-6 py-6 text-sm sm:grid-rows-1 sm:gap-x-10 md:px-8 md:py-7">
       <div className="flex flex-col items-start gap-4 max-sm:col-span-full sm:col-start-2 sm:row-start-1">
