@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home({ searchParams }) {
-  const { category, sort } = searchParams;
+  const { category = "all", sort = "latest" } = searchParams;
 
   return (
     <div>

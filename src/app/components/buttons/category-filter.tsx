@@ -22,7 +22,7 @@ export default function CategoryFilter({ category }) {
 
   let selectedCategory = params.get("category");
   if (!categoryFilters.includes(selectedCategory)) {
-    selectedCategory = categoryFilters[0];
+    selectedCategory = "all";
   }
   const isSelected = selectedCategory === category;
   const formattedCategory = category.replace(
@@ -32,7 +32,7 @@ export default function CategoryFilter({ category }) {
 
   async function updateCategory() {
     // menuState doesn't exist for viewport widths >= 768px
-    const searchParams = new URLSearchParams([...params.entries()]);
+    const searchParams = new URLSearchParams(window.location.search);
 
     menuState?.toggleMenu();
     searchParams.set("category", category);

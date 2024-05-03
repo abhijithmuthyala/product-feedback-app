@@ -10,7 +10,7 @@ export default function SortOptions() {
 
   let selectedOption = params.get("sort");
   if (!options.includes(selectedOption)) {
-    selectedOption = options[0];
+    selectedOption = "latest";
   }
 
   function handleSortChange(e) {

@@ -8,8 +8,8 @@ type SuggestionsProps = {
 };
 
 export default async function Suggestions({
-  category = "all",
-  sort = "latest",
+  category,
+  sort,
 }: SuggestionsProps) {
   const suggestions = await getSuggestions(category, sort);
 
