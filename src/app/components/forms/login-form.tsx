@@ -1,9 +1,16 @@
+"use client";
+
+import { handleLogin } from "@/actions/login";
+import { useFormState } from "react-dom";
 import SignInButton from "../buttons/sign-in";
+import FormFeedback from "./input";
 
 export default function LoginForm({ onSwitch }) {
+  const [fs, loginAction] = useFormState(handleLogin, { error: null });
+
   return (
     <>
-      <form>
+      <form action={loginAction}>
         <div className="grid gap-y-6">
           <label
             htmlFor="email"
@@ -35,6 +42,11 @@ export default function LoginForm({ onSwitch }) {
             />
           </label>
         </div>
+        {fs?.error && (
+          <div className="mt-4">
+            <FormFeedback message={fs.error} />
+          </div>
+        )}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <SignInButton />
         </div>

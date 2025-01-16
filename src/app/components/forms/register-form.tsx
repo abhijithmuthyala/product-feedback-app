@@ -1,11 +1,16 @@
 "use client";
 
+import { handleSignup } from "@/actions/login";
+import { useFormState } from "react-dom";
 import SignUpButton from "../buttons/sign-up";
+import FormFeedback from "./input";
 
 export default function RegisterForm({ onSwitch }) {
+  const [fs, signupAction] = useFormState(handleSignup, { error: null });
+
   return (
     <>
-      <form>
+      <form action={signupAction}>
         <div className="grid gap-y-6">
           <label
             htmlFor="email"
@@ -47,19 +52,6 @@ export default function RegisterForm({ onSwitch }) {
               className="rounded-md px-3 py-2 font-regular"
             />
           </label>
-          {/* <label
-            htmlFor="username"
-            className="grid gap-y-2 font-semibold text-neutral-7"
-          >
-            User name
-            <input
-              type="text"
-              name="username"
-              id="username"
-              required
-              className="rounded-md px-3 py-2 font-regular"
-            />
-          </label> */}
           <label
             htmlFor="pw"
             className="grid gap-y-2 font-semibold text-neutral-7"
@@ -76,6 +68,11 @@ export default function RegisterForm({ onSwitch }) {
             />
           </label>
         </div>
+        {fs?.error && (
+          <div className="mt-4">
+            <FormFeedback message={fs.error} />
+          </div>
+        )}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <SignUpButton />
         </div>

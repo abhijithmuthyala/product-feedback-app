@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function useUpdateQueryParamEffect(key, value) {
   useEffect(() => {
@@ -9,4 +9,18 @@ export function useUpdateQueryParamEffect(key, value) {
 
     window.history.replaceState(null, "", newUrl);
   }, [key, value]);
+}
+
+export function useFormError() {
+  const [error, setError] = useState(null);
+
+  function handleError(error) {
+    setError(error);
+  }
+
+  function clearError() {
+    setError(null);
+  }
+
+  return { error, setError: handleError, clearError };
 }

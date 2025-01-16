@@ -3,12 +3,15 @@
 import { headers } from "next/headers";
 
 import { createClient } from "@/supabase/server";
+import { redirect } from "next/navigation";
 
-export async function handleLogin(formData) {
+export async function handleLogin(formState, formData) {
   const email = formData.get("email");
   const password = formData.get("pw");
 
   const supabase = createClient();
+  let error;
+
   try {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
@@ -18,11 +21,16 @@ export async function handleLogin(formData) {
       throw new Error(error.message);
     }
   } catch (error) {
-    throw new Error(error);
+    error = error;
+    return { error: error.message };
+  }
+
+  if (!error) {
+    redirect("/");
   }
 }
 
-export async function handleSignup(formData) {
+export async function handleSignup(formState, formData) {
   const email = formData.get("email");
   const password = formData.get("pw");
   const firstname = formData.get("firstname");
@@ -31,6 +39,7 @@ export async function handleSignup(formData) {
 
   const origin = headers().get("origin");
   const supabase = createClient();
+  let error;
 
   try {
     const { data, error } = await supabase.auth.signUp({
@@ -58,6 +67,10 @@ export async function handleSignup(formData) {
       throw new Error(newUserError.message);
     }
   } catch (error) {
-    throw new Error(error);
+    error = error;
+    return { error: error.message };
+  }
+  if (!error) {
+    redirect("/");
   }
 }
